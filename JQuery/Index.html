@@ -1,0 +1,276 @@
+﻿<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Jquery</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+
+<body>
+    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+        <img class="bg-light" id="img" src="img/logo_02.png" style="height:44px" >
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#" style="height:50px">jQuery Tutorial</a>
+        <input class="form-control-dark w-100" type="text" placeholder="Search" aria-label="Search" style="height:50px">
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <a class="nav-link" href="#">Sign out</a>
+            </li>
+        </ul>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-2 d-none d-md-block bg-light sidebar">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">
+                            <span id="dashboard"><i class="fa fa-home"></i>Dashboard</span>
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span><i class="fa fa-file"></i>Orders</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span><i class="fa fa-shopping-cart"></i>Products</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span><i class="fa fa-users"></i>Customers</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span><i class="fa fa-chart-bar"></i>Reports</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span><i class="fa fa-layer-group"></i>Integrations</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                    <span>Saved reports</span>
+                    <a class="d-flex align-items-center text-muted" href="#">
+                        <span class="fa fa-plus-circle"></span>
+                    </a>
+                </h6>
+                <ul class="nav flex-column mb-2">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span><i class="fa fa-file"></i>Integrations</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span><i class="fa fa-file"></i>Last quarter</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span><i class="fa fa-file"></i>Social engagement</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span><i class="fa fa-file"></i>Year-end sale</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-10">
+                <br>
+                <div class="card">
+                    <div class="card-header">
+                        <span>Search</span>
+                    </div>
+                    <div class="card-body">
+                        <form class="form">
+                            <div class="row">
+                                <div class="col-1">
+                                    <label>ID</label>
+                                </div>
+                                <div class="col-5">
+                                    <input class="form-control" type="text" id="idSearch">
+                                </div>
+                                <div class="col-1">
+                                    <label>Name</label>
+                                </div>
+                                <div class="col-5">
+                                    <input class="form-control" type="text" id="nameSearch">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <br />
+                <div class="card">
+                    <div class="card-header">
+                        <span>Details</span>
+                    </div>
+                    <div class="card-body">
+                        <form class="form">
+                            <div class="row">
+                                <div class="col-1">
+                                    <label>Name</label>
+                                </div>
+                                <div class="col-5">
+                                    <input class="form-control" type="text" id="nameDetail">
+                                </div>
+                                <div class="col-1">
+                                    <label>Position</label>
+                                </div>
+                                <div class="col-5">
+                                    <input class="form-control" type="text" id="positionDetail">
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top:1rem">
+                                <div class="col-1">
+                                    <label>Salary</label>
+                                </div>
+                                <div class="col-5">
+                                    <input class="form-control" type="text" id="salaryDetail">
+                                </div>
+                                <div class="col-1">
+                                    <label>Date</label>
+                                </div>
+                                <div class="col-5">
+                                    <input class="form-control" type="text" id="start_dateDetail">
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top:1rem">
+                                <div class="col-1">
+                                    <label>Office</label>
+                                </div>
+                                <div class="col-5">
+                                    <input class="form-control" type="text" id="officeDetail">
+                                </div>
+                                <div class="col-1">
+                                    <label>Extn</label>
+                                </div>
+                                <div class="col-5">
+                                    <input class="form-control" type="text" id="extnDetail">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <br>
+                <div class="card" style="margin-bottom: 60px;">
+                    <div class="card-header">
+                        <span>Table</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table" id="dataTable">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Id
+                                        </th>
+                                        <th>
+                                            Name
+                                        </th>
+                                        <th>
+                                            Position
+                                        </th>
+                                        <th>
+                                            Salary
+                                        </th>
+                                        <th>
+                                            Started date
+                                        </th>
+                                        <th>
+                                            Office
+                                        </th>
+                                        <th>
+                                            Extn
+                                        </th>
+                                        <th>
+                                            Delete
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card" style="position: fixed;bottom: 0;width: 100%;">
+        <div class="card-body row" style="padding: 0.25px">
+            <div class="col-2">
+            </div>
+            <div class="col-10" style="padding:5px; background-color:darkslateblue; margin-left:270px ">
+                <button class="btn btn-secondary">
+                    <span>F1</span>
+                </button>
+                <button class="btn btn-secondary">
+                    <span>F2</span>
+                </button>
+                <button class="btn btn-secondary" id="btnSearch">
+                    <span>F3</span>
+                    <p style="margin-top:-12px">Search</p>
+                </button>
+                <button class="btn btn-secondary">
+                <span>F4</span>
+                </button>
+                <button class="btn btn-secondary" id="btnClear">
+                    <span>F5</span>
+                    <p style="margin-top:-12px">Clear</p>
+                </button>
+                <button class="btn btn-secondary">
+                    <span>F6</span>
+                </button>
+                <button class="btn btn-secondary">
+                    <span>F7</span>
+                </button>
+                <button class="btn btn-secondary">
+                    <span>F8</span>
+                </button>
+                <button class="btn btn-secondary">
+                    <span>F9</span>
+                </button>
+                <button class="btn btn-secondary" id="btnSave">
+                    <span>F10</span>
+                    <p style="margin-top:-12px">Save</p>
+                </button>
+                <button class="btn btn-secondary">
+                    <span>F11</span>
+                </button>
+                <button class="btn btn-secondary">
+                    <span>F12</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" charset="utf8"
+            src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" charset="utf8"
+            src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript" src='js/main.js'></script>
+    <script type="text/javascript" src="blog.js"></script>
+</body>
