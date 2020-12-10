@@ -16,14 +16,10 @@
     $('.selectPositions').append(positions);
     $('.selectOffices').append(offices);
     $(this).find('.selectPositions').each(function (s) {
-        var id = $(this).attr('data-id');
-        var val = $(this).val(id);
-        val.find("option[value=" + id + "]").attr('selected', true);
+        selectedOp();
     });
     $(this).find('.selectOffices').each(function (s) {
-        var id = $(this).attr('data-id');
-        var val = $(this).val(id);
-        val.find("option[value=" + id + "]").attr('selected', true);
+        selectedOp();
     });
 
     $('#dataTable').on('click', 'tr', function () {
@@ -41,9 +37,6 @@
         $('#start_dateDetail').val(start_date);
         $('#officeDetail').val(office);
         $('#extnDetail').val(extn);
-/*        $('#'+id).on('click',function () {
-            $('dataTable tr').filter('.'+id+'').hide();
-        });*/
     });
     $('#btnClear').on('click', function () {
         $('#idSearch').val('');
@@ -51,40 +44,11 @@
     });
 
     $('#btnSearch').on('click', function () {
-        /*$.each(data.users, function (key, value) {
-            if ($('#idSearch').val() == value.id || $('#idSearch').val() == "") {
-                if (value.name.includes($('#nameSearch').val()) || $('#nameSearch').val() == "") {
-                    alert(value.id + " " + value.name);
-                }
-
-            }
-        });*/
-        $.each($('#dataTable tbody tr'), function () {  
-        if ($(this).find('td').eq(0).text().indexOf($('#idSearch').val().toLowerCase()) === -1) {
-            $(this).hide();
-        } else if ($(this).find('td').eq(1).text().toLowerCase().indexOf($('#nameSearch').val().toLowerCase()) === -1) {
-            $(this).hide();
-        } else {
-            $(this).show();
-        }
-    })
+        search();
     });
 
     $('#btnSave').on('click', function () {
-        var data = new Array();
-        $.each($('#dataTable tbody tr'), function () {
-            var item = {
-                id: $(this).find('td:eq(0)').text(),
-                name: $(this).find('td:eq(1)').text(),
-                position: $(this).find('td:eq(2)').find('option:selected').text(),
-                salary: $(this).find('td:eq(3)').find('input').val(),
-                started_date: $(this).find('td:eq(4)').find('input').val(),
-                office: $(this).find('td:eq(5)').find('option:selected').text(),
-                extn: $(this).find('td:eq(6)').text()
-            };
-            data.push(item);
-        });
-        console.log(data);
+        logDataTable();
     });
 
     $('#dashboard').on('click', function () {
@@ -103,6 +67,41 @@ function addRow(key, value) {
     dataJson += '<td>' + value.extn + '</td>';
     dataJson += '<td> <button type="button" class="btn btn-danger" id="'+value.id+'">Delete</button></td>';
     dataJson += '</tr>';
+}
+
+function selectedOp() {
+    var id = $(this).attr('data-id');
+    var val = $(this).val(id);
+    val.find("option[value=" + id + "]").attr('selected', true);
+}
+
+function search() {
+    $.each($('#dataTable tbody tr'), function () {
+        if ($(this).find('td').eq(0).text().indexOf($('#idSearch').val().toLowerCase()) === -1) {
+            $(this).hide();
+        } else if ($(this).find('td').eq(1).text().toLowerCase().indexOf($('#nameSearch').val().toLowerCase()) === -1) {
+            $(this).hide();
+        } else {
+            $(this).show();
+        }
+    })
+}
+
+function logDataTable() {
+    var data = new Array();
+    $.each($('#dataTable tbody tr'), function () {
+        var item = {
+            id: $(this).find('td:eq(0)').text(),
+            name: $(this).find('td:eq(1)').text(),
+            position: $(this).find('td:eq(2)').find('option:selected').text(),
+            salary: $(this).find('td:eq(3)').find('input').val(),
+            started_date: $(this).find('td:eq(4)').find('input').val(),
+            office: $(this).find('td:eq(5)').find('option:selected').text(),
+            extn: $(this).find('td:eq(6)').text()
+        };
+        data.push(item);
+    });
+    console.log(data);
 }
 
 
